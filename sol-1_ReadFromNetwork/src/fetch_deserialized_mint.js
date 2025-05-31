@@ -1,4 +1,6 @@
 import { PublicKey, Connection } from "@solana/web3.js";
+
+// We import this library to deserialize the bytecode of a minting address
 import { getMint } from "@solana/spl-token";
 
 const connection = new Connection(
@@ -17,7 +19,7 @@ console.log(
       if (typeof value === "bigint") {
         return value.toString();
       }
-      // Handle Buffer objects
+      // Handle Buffer objects to convert from hex to text
       if (Buffer.isBuffer(value)) {
         return `<Buffer ${value.toString("hex")}>`;
       }
