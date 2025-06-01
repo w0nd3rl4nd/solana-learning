@@ -1,3 +1,7 @@
+/*
+We import System program because the system program is the one that has the hability to call transfers within the system. We will use it to declare the transaction
+We also import sendAndConfirmTransacion to perform the transaction and get it's signature
+*/
 import {
     LAMPORTS_PER_SOL,
     SystemProgram,
