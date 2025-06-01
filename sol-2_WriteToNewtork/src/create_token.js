@@ -49,11 +49,13 @@ const initializeMintInstruction = createInitializeMint2Instruction (
 )
 
 // Build a transaction to create an initialise the mint account
+// This transaction ensures either both or none operations succeed
 const transaction = new Transaction().add(
     createAccountInstruction,
     initializeMintInstruction
 );
 
+// Performs the transaction and adds the wallet and the mint acc
 const transactionSignature = await sendAndConfirmTransaction (
     connection,
     transaction,
