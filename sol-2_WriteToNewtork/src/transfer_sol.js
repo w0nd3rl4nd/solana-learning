@@ -22,18 +22,21 @@ const signature = await connection.requestAirdrop(
 )
 await connection.confirmTransaction(signature, "confirmed");
 
+// 1. Create the instruction to be invoked
 const transferInstruction = SystemProgram.transfer({
     fromPubkey: sender.publicKey,
     toPubkey: receiver.publicKey,
     lamports: 0.01 * LAMPORTS_PER_SOL
 });
 
+// 2. Add instructions to the transaction
 const transaction = new Transaction().add(transferInstruction);
 
+// 3. Sign and send the transaction
 const transactionSignature = await sendAndConfirmTransaction(
     connection,
     transaction,
-    [sender]
+    [sender] // Signer keypair
 );
 
 console.log(`Transaction signature: ${transactionSignature}`)
